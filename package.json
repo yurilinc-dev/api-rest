@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon server.js",
+    "stop-code": "npm-run-all -s stop-code-git",
+    "stop-code-git": "git add . && git commit -m \"Commit automático\" && echo 'Código parado.'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
