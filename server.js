@@ -1,6 +1,15 @@
 import app from './src/app.js'
-const PORT = 3000
+import connection from './infra/connection.js'
 
-app.listen(PORT, () => {
-console.log(`A aplicação está rodando na url http://localhost:${PORT}`)
+const PORT = 3000
+connection.connect((error) => {
+    if (error) {
+        console.log(error)
+    } else {
+        console.log('\nConexão realizada com sucesso.\n')
+
+        app.listen(PORT, () => {
+            console.log(`A aplicação está rodando na url http://localhost:${PORT}.\nPara parar a aplicação pressione Ctrl + 'C'.`)
+        })
+    }
 })
