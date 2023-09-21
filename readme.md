@@ -1,4 +1,5 @@
-## BR
+```
+## PT-BR
 
 Seção em português do Brasil.
 
@@ -97,7 +98,7 @@ curl --request DELETE \
 ---
 
 
-## EN
+## EN-US
 
 Section in English.
 
