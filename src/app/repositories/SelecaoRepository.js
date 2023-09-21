@@ -1,59 +1,29 @@
-import connection from "../database/connection.js"
+import { consulta } from "../database/connection.js"
 
 class SelecaoRepository {
     create(selecao)    {
         const sql = "INSERT INTO selecoes SET ?"
-        return new Promise((resolve, reject) => {
-            connection.query(sql, selecao, (error, result) => {
-                if (error) return reject(`A consulta ${sql} não foi cadastrada!`)
-                const row = JSON.parse(JSON.stringify(result))
-                return resolve(row)
-            })
-        })
+        return consulta(sql, selecao, 'Não foi possível cadastrar.')
     }
 
     findAll()   {
         const sql = "SELECT * FROM selecoes"
-        return new Promise((resolve, reject) => {
-            connection.query(sql, (error, result) => {
-                if (error) return reject(`A consulta ${sql} não foi localizada!`)
-                const row = JSON.parse(JSON.stringify(result))
-                return resolve(row)
-            })
-        })
+        return consulta(sql, 'Não foi possível filtrar.')
     }
 
     findById(id)  {
         const sql = "SELECT * FROM selecoes WHERE idselecoes=?"
-        return new Promise((resolve, reject) => {
-            connection.query(sql, id, (error, result) => {
-                if (error) return reject(`A consulta ${sql} não foi localizada!`)
-                const row = JSON.parse(JSON.stringify(result))
-                return resolve(row)
-            })
-        })
+        return consulta(sql, id, 'Não foi possível filtrar por Id.')
     }
 
     update(selecao, id)    {
         const sql = "UPDATE selecoes SET ? WHERE idselecoes=?"
-        return new Promise((resolve, reject) => {
-            connection.query(sql, [selecao, id], (error, result) => {
-                if (error) return reject(`A consulta ${sql} não foi alterada!`)
-                const row = JSON.parse(JSON.stringify(result))
-                return resolve(row)
-            })
-        })
+        return consulta(sql, [selecao, id], 'Não foi possível atualizar.')
     }
 
     delete(id)    {
         const sql = "DELETE FROM selecoes WHERE idselecoes=?"
-        return new Promise((resolve, reject) => {
-            connection.query(sql, id, (error, result) => {
-                if (error) return reject(`A consulta ${sql} não foi deletada!`)
-                const row = JSON.parse(JSON.stringify(result))
-                return resolve(row)
-            })
-        })
+        return consulta(sql, id, 'Não foi possível deletar.')
     }
 }
 
