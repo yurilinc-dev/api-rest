@@ -1,4 +1,3 @@
-```
 ## PT-BR
 
 Seção em português do Brasil.
